@@ -8,7 +8,9 @@ function App() {
   const [streamData, setStreamData] = useState({ time: "12:00:00 PM", price: undefined });
   const [modal, setModal] = useState(false);
   useEffect(() => {
-    const ws = new WebSocket("ws://stream.tradingeconomics.com/?client=guest:guest");
+    let ws;
+    if (location.href.includes("https")) ws = new WebSocket("wss://stream.tradingeconomics.com/?client=guest:guest");
+    else ws = new WebSocket("ws://stream.tradingeconomics.com/?client=guest:guest");
     ws.addEventListener("open", () => {
       console.log("connection established");
       ws.send(JSON.stringify({ topic: "subscribe", to: "EURUSD:CUR" }));
