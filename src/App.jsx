@@ -9,7 +9,7 @@ function App() {
   const [modal, setModal] = useState(false);
   useEffect(() => {
     let ws;
-    if (location.href.includes("https")) ws = new WebSocket("wss://stream.tradingeconomics.com/?client=guest:guest");
+    if (window.location.href.includes("https")) ws = new WebSocket("wss://stream.tradingeconomics.com/?client=guest:guest");
     else ws = new WebSocket("ws://stream.tradingeconomics.com/?client=guest:guest");
     ws.addEventListener("open", () => {
       console.log("connection established");
