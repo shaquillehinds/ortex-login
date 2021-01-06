@@ -27,14 +27,14 @@ function App() {
       <div className="logo">
         <img alt="ortex" src="https://ortex-static-files.s3.amazonaws.com/static/public/images/ortex_logo_v-white.svg" />
       </div>
-      <form onSubmit={(e) => e.preventDefault()} className="form_container" autoComplete="off">
+      <form onSubmit={(e) => e.preventDefault()} className="form_container" autoComplete="off" action="/login" method="post">
         <div className="form_input">
           <i className="fa fa-user" aria-hidden="true"></i>
-          <input type="text" placeholder="Email" />
+          <input name="email" type="text" placeholder="Email" />
         </div>
         <div className="form_input">
           <i className="fa fa-lock" aria-hidden="true"></i>
-          <input type="password" placeholder="Password" />
+          <input name="password" type="password" placeholder="Password" />
         </div>
         <div>
           <button className="form_button">
