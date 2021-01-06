@@ -1,38 +1,272 @@
 .App {
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  min-height: 60rem;
+  height: 100vh;
+  background: #060c21;
+  width: 100%;
+  position: relative;
+  flex-direction: column;
+  z-index: 1;
+  color: #fff;
 }
-
-.App-logo {
-  height: 40vmin;
+.App > div,
+.App > form {
+  margin: 1rem 0;
+}
+.logo {
+  width: 150px;
+}
+.form_container {
+  position: relative;
+  height: 400px;
+  width: 90%;
+  min-width: 25rem;
+  max-width: 35rem;
+  background: #060c21;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #000;
+}
+.form_container::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: #01bfbd;
+  background-image: linear-gradient(135deg, #39ad72 0%, #01bfbd 100%);
+  transform: skew(2deg, 2deg);
+  z-index: -1;
+}
+.form_container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.05);
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.form_container h1 {
+  float: left;
+  font-size: 3rem;
+  border-bottom: 4px solid #39ad72;
+  padding: 13px 0;
+}
+
+.form_input {
+  width: 70%;
+  overflow: hidden;
+  font-size: 15px;
+  margin: 8px 0;
+  padding: 8px 0;
+  border-bottom: 1px solid #4caf50;
+}
+
+.form_input i {
+  width: 26px;
+  float: left;
+  text-align: center;
+}
+
+.form_input input {
+  border: none;
+  outline: none;
+  background: none;
+  background-color: transparent;
+  color: #fff;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+  background-color: rgba(0, 0, 0, 0) !important;
+  color: #fff !important;
+}
+.form_button {
+  border: none;
+  position: relative;
+  margin-bottom: 1rem;
+  background-color: #01bfbd;
+  color: #fff;
+  height: 50px;
+  width: 200px;
+  font-size: 2rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+  transition: background-color 100ms ease-in;
+  outline: transparent;
+}
+.form_button:hover,
+.form_button:focus {
+  background-color: transparent;
+  transition: background-color 100ms ease-out;
+}
+.form_button::before {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  bottom: 2px;
+  width: 50%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.form_button span {
+  opacity: 0;
+  transition: opacity 100ms ease-in;
+}
+.form_button:hover span,
+.form_button:focus span {
+  opacity: 1;
+  transition: opacity 100ms ease-out;
+}
+.form_button span:nth-child(1) {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, #0c002b, #01bfbd);
+  animation: animate1 2s linear infinite;
+}
+@keyframes animate1 {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+.form_button span:nth-child(2) {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to bottom, #0c002b, #01bfbd);
+  animation: animate2 2s linear infinite;
+  animation-delay: 1s;
+}
+@keyframes animate2 {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(100%);
+  }
+}
+.form_button span:nth-child(3) {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to left, #0c002b, #01bfbd);
+  animation: animate3 2s linear infinite;
+}
+@keyframes animate3 {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+.form_button span:nth-child(4) {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to top, #0c002b, #01bfbd);
+  animation: animate4 2s linear infinite;
+  animation-delay: 1s;
+}
+@keyframes animate4 {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(-100%);
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.form_forgot_password {
+  font-size: 1.5rem;
+  color: #01bfbd;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.market_data {
   display: flex;
-  flex-direction: column;
+  width: 25rem;
+  justify-content: space-around;
+  padding: 0.6rem 1.5rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  box-shadow: 3px 3px 12px rgba(1, 191, 189, 0.5);
+  margin: 0;
+}
+.market_data p {
+  color: #01bfbd;
+  font-size: 1.1rem;
+}
+
+#modal_wrapper {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: rgba(0, 0, 0, 0.8);
+  margin: 0;
 }
 
-.App-link {
-  color: #61dafb;
+.password_modal {
+  width: 30rem;
+  height: 35rem;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  border: solid 3px #01bfbd;
+  background-color: rgba(6, 12, 33, 0.9);
+  padding: 2rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.password_modal h2 {
+  margin: 0;
+  font-size: 2rem;
+}
+.password_modal p {
+  margin: 0;
+  font-size: 1.5rem;
+}
+.password_modal .form_input {
+  width: 80%;
+}
+.password_modal .form_button {
+  margin: 0;
+  height: 40px;
+  width: 160px;
+  font-size: 1.5rem;
 }
